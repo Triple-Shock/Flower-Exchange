@@ -1,0 +1,63 @@
+Execution_Rep.csv
+Order ID,Client Order ID,Instrument,Side,Exec Status,Quantity,Price,Reason,Transaction Time
+ord0,aa13,Orchid,1,1,8,55.00,Invalid size,20231213-132543.671
+ord1,aa14,Rose,1,0,50,45.00,,20231213-132543.672
+ord2,aa16,Rose,2,3,50,45.00,,20231213-132543.672
+ord1,aa14,Rose,1,2,50,45.00,,20231213-132543.673
+ord3,aa17,Rose,2,0,100,45.00,,20231213-132543.673
+ord4,aa18,Rose,1,2,50,45.00,,20231213-132543.673
+ord2,aa16,Rose,2,2,50,45.00,,20231213-132543.673
+Execution_Rep.csv
+Order ID,Client Order ID,Instrument,Side,Exec Status,Quantity,Price,Reason,Transaction Time
+ord0,aa13,Orchid,1,1,8,55.00,Invalid size,20231213-132713.069
+ord1,aa14,Rose,1,0,50,45.00,,20231213-132713.070
+ord2,aa16,Rose,2,3,50,45.00,,20231213-132713.070
+ord1,aa14,Rose,1,2,50,45.00,,20231213-132713.071
+ord3,aa17,Rose,2,0,100,45.00,,20231213-132713.071
+ord4,aa18,Rose,1,2,50,45.00,,20231213-132713.071
+ord2,aa16,Rose,2,2,50,45.00,,20231213-132713.071
+Execution_Rep.csv
+Order ID,Client Order ID,Instrument,Side,Exec Status,Quantity,Price,Reason,Transaction Time
+ord0,aa13,Orchid,1,1,8,55.00,Invalid size,20231213-133005.550
+ord1,aa14,Rose,1,0,50,45.00,,20231213-133005.551
+ord2,aa16,Rose,2,3,50,45.00,,20231213-133005.551
+ord1,aa14,Rose,1,2,50,45.00,,20231213-133005.551
+ord3,aa17,Rose,2,0,100,45.00,,20231213-133005.552
+ord4,aa18,Rose,1,2,50,45.00,,20231213-133005.552
+ord2,aa16,Rose,2,2,50,45.00,,20231213-133005.552
+Execution_Rep.csv
+Order ID,Client Order ID,Instrument,Side,Exec Status,Quantity,Price,Reason,Transaction Time
+ord0,aa13,Orchid,1,1,8,55.00,Invalid size,20231213-135815.525
+ord1,aa14,Rose,1,0,50,45.00,,20231213-135815.527
+ord2,aa16,Rose,2,3,50,45.00,,20231213-135815.527
+ord1,aa14,Rose,1,2,50,45.00,,20231213-135815.527
+ord3,aa17,Rose,2,0,100,45.00,,20231213-135815.528
+ord4,aa18,Rose,1,2,50,45.00,,20231213-135815.528
+ord2,aa16,Rose,2,2,50,45.00,,20231213-135815.528
+Execution_Rep.csv
+Order ID,Client Order ID,Instrument,Side,Exec Status,Quantity,Price,Reason,Transaction Time
+ord0,aa13,Orchid,1,1,8,55.00,Invalid size,20231213-140931.498
+ord1,aa14,Rose,1,0,50,45.00,,20231213-140931.498
+ord2,aa16,Rose,2,3,50,45.00,,20231213-140931.498
+ord1,aa14,Rose,1,2,50,45.00,,20231213-140931.499
+ord3,aa17,Rose,2,0,100,45.00,,20231213-140931.499
+ord4,aa18,Rose,1,2,50,45.00,,20231213-140931.499
+ord2,aa16,Rose,2,2,50,45.00,,20231213-140931.499
+Execution_Rep.csv
+Order ID,Client Order ID,Instrument,Side,Exec Status,Quantity,Price,Reason,Transaction Time
+ord0,aa13,Orchid,1,1,8,55.00,Invalid size,20231213-140938.737
+ord1,aa14,Rose,1,0,50,45.00,,20231213-140938.737
+ord2,aa16,Rose,2,3,50,45.00,,20231213-140938.738
+ord1,aa14,Rose,1,2,50,45.00,,20231213-140938.738
+ord3,aa17,Rose,2,0,100,45.00,,20231213-140938.738
+ord4,aa18,Rose,1,2,50,45.00,,20231213-140938.738
+ord2,aa16,Rose,2,2,50,45.00,,20231213-140938.739
+Execution_Rep.csv
+Order ID,Client Order ID,Instrument,Side,Exec Status,Quantity,Price,Reason,Transaction Time
+ord0,aa13,Orchid,1,1,8,55.00,Invalid size,20231213-140943.394
+ord1,aa14,Rose,1,0,50,45.00,,20231213-140943.394
+ord2,aa16,Rose,2,3,50,45.00,,20231213-140943.394
+ord1,aa14,Rose,1,2,50,45.00,,20231213-140943.395
+ord3,aa17,Rose,2,0,100,45.00,,20231213-140943.395
+ord4,aa18,Rose,1,2,50,45.00,,20231213-140943.395
+ord2,aa16,Rose,2,2,50,45.00,,20231213-140943.395

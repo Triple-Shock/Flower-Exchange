@@ -62,8 +62,31 @@ int main() {
         // Read CSV file
         std::string csvData = readCSVFile(csvFilePath);
 
+        // Send size of CSV first
+        // Send CSV size to server
+        uint32_t csvSize = static_cast<uint32_t>(csvData.size());
+        send(clientSocket, reinterpret_cast<const char*>(&csvSize), sizeof(csvSize), 0);
+
+
         // Send CSV to server
-        send(clientSocket, csvData.c_str(), csvData.size(), 0);
+        size_t totalSent = 0;
+        while (totalSent < csvData.size()) {
+            std::cout << "Sent " << totalSent << " bytes of " << csvData.size() << " bytes\n";
+            size_t remainingData = csvData.size() - totalSent;
+            size_t chunkSize = BUFFER_SIZE < remainingData ? BUFFER_SIZE : remainingData;
+
+            int bytesSent = send(clientSocket, csvData.c_str() + totalSent, chunkSize, 0);
+
+            if (bytesSent <= 0) {
+                // Handle error or connection closed
+                std::cerr << "Error sending CSV to server\n";
+                break;
+            }
+
+            totalSent += static_cast<size_t>(bytesSent);
+        }
+        /*std::string eof = "\r\n\r\n";
+        send(clientSocket, eof.c_str(), eof.size(), 0);*/
         std::cout << "Sent CSV to server\n";
 
         // Receive processed CSV from server

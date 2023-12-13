@@ -90,10 +90,29 @@ int main(int argc, char* argv[]) {
         std::cout << "Client connected\n";
 
         // Receive CSV from client
-        char buffer[BUFFER_SIZE] = { 0 };
+        /*char buffer[BUFFER_SIZE] = { 0 };
         recv(clientSocket, buffer, BUFFER_SIZE, 0);
         std::string receivedCSV(buffer);
-        std::cout << "Received CSV from client:\n" << receivedCSV << std::endl;
+        std::cout << "Received CSV from client:\n" << receivedCSV << std::endl;*/
+
+        uint32_t csvSize = 0;
+        recv(clientSocket, reinterpret_cast<char*>(&csvSize), sizeof(csvSize), 0);
+
+        std::string receivedCSV;
+        receivedCSV.resize(csvSize);
+        size_t totalReceived = 0;
+        while (totalReceived < csvSize) {
+            int bytesReceived = recv(clientSocket, &receivedCSV[totalReceived], csvSize - totalReceived, 0);
+
+            if (bytesReceived <= 0) {
+                // Either an error occurred or the client closed the connection
+                break;
+            }
+
+            totalReceived += static_cast<size_t>(bytesReceived);
+        }
+
+        std::cout << "Received CSV from client:\n" << std::endl;
 
         // Initialise order books
         OrderBook roseOrderBook("Rose");
@@ -121,14 +140,14 @@ int main(int argc, char* argv[]) {
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
         std::cout << "Time taken to create orders vector: " << duration.count() << " microseconds" << std::endl;
 
-        printOrders(orders);
+        // printOrders(orders);
 
         // Trade
 
         // loop through orders
         start = std::chrono::high_resolution_clock::now();
         for (Order& order : orders) {
-            std::cout << "Processing order: " << order.client_order_id << std::endl;
+            // std::cout << ":::::::: " << std::endl;
             if (order.is_valid()) {
                 if (order.instrument == "Rose")
                     roseOrderBook.trade(order);
@@ -142,7 +161,7 @@ int main(int argc, char* argv[]) {
                     orchidOrderBook.trade(order);
             }
             else {
-                std::cout << "Invalid order: " << order.client_order_id << std::endl;
+                // std::cout << "Invalid order: " << order.client_order_id << std::endl;
                 order.write_csv();
             }
 

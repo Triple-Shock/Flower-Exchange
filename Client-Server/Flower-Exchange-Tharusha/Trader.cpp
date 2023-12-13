@@ -11,7 +11,8 @@ std::vector<Order> Trader::readOrders(const std::string& csvString)
 
 	std::string line;
 	std::getline(csvStream, line); // Skip the header line
-	int i = 0; // keep order count
+	std::getline(csvStream, line); // Skip the header line 2
+	int i = 1; // keep order count
 	while (std::getline(csvStream, line)) {
 		Order order = parseOrder(line, i);
 		orders.push_back(order);

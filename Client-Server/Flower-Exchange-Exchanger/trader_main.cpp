@@ -90,14 +90,34 @@ int main() {
         std::cout << "Sent CSV to server\n";
 
         // Receive processed CSV from server
+        uint32_t rcvCsvSize = 0;
+        recv(clientSocket, reinterpret_cast<char*>(&rcvCsvSize), sizeof(rcvCsvSize), 0);
+
+        std::string receivedCSV;
+        receivedCSV.resize(rcvCsvSize);
+        size_t totalReceived = 0;
+        while (totalReceived < rcvCsvSize) {
+            int bytesReceived = recv(clientSocket, &receivedCSV[totalReceived], rcvCsvSize - totalReceived, 0);
+
+            if (bytesReceived <= 0) {
+                // Either an error occurred or the client closed the connection
+                std::cerr << "Error receiving processed CSV from server\n";
+                break;
+            }
+
+            totalReceived += static_cast<size_t>(bytesReceived);
+        }
+
+
+
         char buffer[BUFFER_SIZE] = { 0 };
         recv(clientSocket, buffer, BUFFER_SIZE, 0);
         std::string processedCSV(buffer);
-        std::cout << "Received processed CSV from server:\n" << processedCSV << "\n";
+        std::cout << "Received processed CSV from server:\n" << receivedCSV << "\n";
 
         // Write processed CSV to file
         std::string processedCSVFilePath = "execution_report_" + csvFilePath;
-        writeCsvToFile(processedCSV, processedCSVFilePath);
+        writeCsvToFile(receivedCSV, processedCSVFilePath);
         closesocket(clientSocket);
 
     }

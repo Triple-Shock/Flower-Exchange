@@ -86,14 +86,7 @@ int main(int argc, char* argv[]) {
             WSACleanup();
             return EXIT_FAILURE;
         }
-
         std::cout << "Client connected\n";
-
-        // Receive CSV from client
-        /*char buffer[BUFFER_SIZE] = { 0 };
-        recv(clientSocket, buffer, BUFFER_SIZE, 0);
-        std::string receivedCSV(buffer);
-        std::cout << "Received CSV from client:\n" << receivedCSV << std::endl;*/
 
         uint32_t csvSize = 0;
         recv(clientSocket, reinterpret_cast<char*>(&csvSize), sizeof(csvSize), 0);
@@ -106,6 +99,7 @@ int main(int argc, char* argv[]) {
 
             if (bytesReceived <= 0) {
                 // Either an error occurred or the client closed the connection
+                std::cerr << "Error receiving CSV from client\n";
                 break;
             }
 
@@ -140,8 +134,6 @@ int main(int argc, char* argv[]) {
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
         std::cout << "Time taken to create orders vector: " << duration.count() << " microseconds" << std::endl;
 
-        // printOrders(orders);
-
         // Trade
 
         // loop through orders
@@ -173,8 +165,32 @@ int main(int argc, char* argv[]) {
 
         // Send execution report back to client
         std::string outCsvData = readCSVFile(OUTFILE);
-        send(clientSocket, outCsvData.c_str(), outCsvData.size(), 0);
-        std::cout << "Processed CSV sent back to client" << std::endl;
+        uint32_t outCsvSize = static_cast<uint32_t>(outCsvData.size());
+        send(clientSocket, reinterpret_cast<const char*>(&outCsvSize), sizeof(outCsvSize), 0);
+
+        // Send CSV to server
+        size_t totalSent = 0;
+        while (totalSent < outCsvData.size()) {
+            std::cout << "Sent " << totalSent << " bytes of " << outCsvData.size() << " bytes\n";
+            size_t remainingData = outCsvData.size() - totalSent;
+            size_t chunkSize = BUFFER_SIZE < remainingData ? BUFFER_SIZE : remainingData;
+
+            int bytesSent = send(clientSocket, outCsvData.c_str() + totalSent, chunkSize, 0);
+
+            if (bytesSent <= 0) {
+                // Handle error or connection closed
+                std::cerr << "Error sending CSV to server\n";
+                break;
+            }
+
+            totalSent += static_cast<size_t>(bytesSent);
+        }
+        /*std::string eof = "\r\n\r\n";
+        send(clientSocket, eof.c_str(), eof.size(), 0);*/
+        std::cout << "Sent CSV to client\n";
+
+        //send(clientSocket, outCsvData.c_str(), outCsvData.size(), 0);
+        //std::cout << "Processed CSV sent back to client" << std::endl;
 
         // clear output file
         file.open(OUTFILE, std::ofstream::trunc);

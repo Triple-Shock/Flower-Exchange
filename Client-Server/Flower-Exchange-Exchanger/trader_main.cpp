@@ -71,7 +71,7 @@ int main() {
         // Send CSV to server
         size_t totalSent = 0;
         while (totalSent < csvData.size()) {
-            std::cout << "Sent " << totalSent << " bytes of " << csvData.size() << " bytes\n";
+            //std::cout << "Sent " << totalSent << " bytes of " << csvData.size() << " bytes\n";
             size_t remainingData = csvData.size() - totalSent;
             size_t chunkSize = BUFFER_SIZE < remainingData ? BUFFER_SIZE : remainingData;
 

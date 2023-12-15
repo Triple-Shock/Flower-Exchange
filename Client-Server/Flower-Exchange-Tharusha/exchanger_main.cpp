@@ -162,6 +162,44 @@ int main(int argc, char* argv[]) {
         duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
         std::cout << "Time taken to process all orders: " << duration.count() << " microseconds" << std::endl;
 
+        //// Without creating vector
+        //auto start = std::chrono::high_resolution_clock::now();
+
+        //// Parse CSV
+        //std::vector<Order> orders;
+
+        //// Create a stringstream from the CSV string
+        //std::istringstream csvStream(receivedCSV);
+
+        //std::string line;
+        //std::getline(csvStream, line); // Skip the header line
+        //std::getline(csvStream, line); // Skip the header line 2
+        //int i = 1; // keep order count
+        //while (std::getline(csvStream, line)) {
+        //    Order order = trader.parseOrder(line, i);
+        //    if (order.is_valid()) {
+        //        if (order.instrument == "Rose")
+        //            roseOrderBook.trade(order);
+        //        else if (order.instrument == "Lavender")
+        //            lavenderOrderBook.trade(order);
+        //        else if (order.instrument == "Lotus")
+        //            lotusOrderBook.trade(order);
+        //        else if (order.instrument == "Tulip")
+        //            tulipOrderBook.trade(order);
+        //        else if (order.instrument == "Orchid")
+        //            orchidOrderBook.trade(order);
+        //    }
+        //    else {
+        //        // std::cout << "Invalid order: " << order.client_order_id << std::endl;
+        //        order.write_csv();
+        //    }
+        //    //orders.push_back(order);
+        //    i++;
+        //}
+        //auto end = std::chrono::high_resolution_clock::now();
+        //auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+        //std::cout << "Time taken to process orders CSV: " << duration.count() << " microseconds" << std::endl;
+
 
         // Send execution report back to client
         std::string outCsvData = readCSVFile(OUTFILE);
@@ -171,7 +209,7 @@ int main(int argc, char* argv[]) {
         // Send CSV to server
         size_t totalSent = 0;
         while (totalSent < outCsvData.size()) {
-            std::cout << "Sent " << totalSent << " bytes of " << outCsvData.size() << " bytes\n";
+            //std::cout << "Sent " << totalSent << " bytes of " << outCsvData.size() << " bytes\n";
             size_t remainingData = outCsvData.size() - totalSent;
             size_t chunkSize = BUFFER_SIZE < remainingData ? BUFFER_SIZE : remainingData;
 
@@ -187,7 +225,8 @@ int main(int argc, char* argv[]) {
         }
         /*std::string eof = "\r\n\r\n";
         send(clientSocket, eof.c_str(), eof.size(), 0);*/
-        std::cout << "Sent CSV to client\n";
+        std::cout << "Sent CSV to client\n\n" << "...........\n\n\n";
+
 
         //send(clientSocket, outCsvData.c_str(), outCsvData.size(), 0);
         //std::cout << "Processed CSV sent back to client" << std::endl;

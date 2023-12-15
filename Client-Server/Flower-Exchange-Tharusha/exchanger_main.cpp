@@ -93,7 +93,7 @@ int main(int argc, char* argv[]) {
 
         std::string receivedCSV;
         receivedCSV.resize(csvSize);
-        size_t totalReceived = 0;
+        int totalReceived = 0;
         while (totalReceived < csvSize) {
             int bytesReceived = recv(clientSocket, &receivedCSV[totalReceived], csvSize - totalReceived, 0);
 
@@ -103,7 +103,7 @@ int main(int argc, char* argv[]) {
                 break;
             }
 
-            totalReceived += static_cast<size_t>(bytesReceived);
+            totalReceived += bytesReceived;
         }
 
         std::cout << "Received CSV from client:\n" << std::endl;
@@ -162,11 +162,13 @@ int main(int argc, char* argv[]) {
         duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
         std::cout << "Time taken to process all orders: " << duration.count() << " microseconds" << std::endl;
 
-        //// Without creating vector
-        //auto start = std::chrono::high_resolution_clock::now();
+        // WITHOUT CREATING VECTOR 
+
+        //start = std::chrono::high_resolution_clock::now();
 
         //// Parse CSV
-        //std::vector<Order> orders;
+        //// std::vector<Order> orders;
+        //orders.clear();
 
         //// Create a stringstream from the CSV string
         //std::istringstream csvStream(receivedCSV);
@@ -196,10 +198,11 @@ int main(int argc, char* argv[]) {
         //    //orders.push_back(order);
         //    i++;
         //}
-        //auto end = std::chrono::high_resolution_clock::now();
-        //auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+        //end = std::chrono::high_resolution_clock::now();
+        //duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
         //std::cout << "Time taken to process orders CSV: " << duration.count() << " microseconds" << std::endl;
 
+        // WITHOUT CREATING VECTOR - END
 
         // Send execution report back to client
         std::string outCsvData = readCSVFile(OUTFILE);

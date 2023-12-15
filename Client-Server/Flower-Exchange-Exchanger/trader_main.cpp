@@ -69,7 +69,7 @@ int main() {
 
 
         // Send CSV to server
-        size_t totalSent = 0;
+        int totalSent = 0;
         while (totalSent < csvData.size()) {
             //std::cout << "Sent " << totalSent << " bytes of " << csvData.size() << " bytes\n";
             size_t remainingData = csvData.size() - totalSent;
@@ -83,7 +83,7 @@ int main() {
                 break;
             }
 
-            totalSent += static_cast<size_t>(bytesSent);
+            totalSent += bytesSent;
         }
         /*std::string eof = "\r\n\r\n";
         send(clientSocket, eof.c_str(), eof.size(), 0);*/

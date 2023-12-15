@@ -113,7 +113,7 @@ int main() {
         char buffer[BUFFER_SIZE] = { 0 };
         recv(clientSocket, buffer, BUFFER_SIZE, 0);
         std::string processedCSV(buffer);
-        std::cout << "Received processed CSV from server:\n" << receivedCSV << "\n";
+        std::cout << "Received processed CSV from server:\n" << "\n";
 
         // Write processed CSV to file
         std::string processedCSVFilePath = "execution_report_" + csvFilePath;

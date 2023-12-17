@@ -32,3 +32,12 @@ jobs:
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} Flower-Exchange/Flower-Exchange.sln
+
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: artifacts
+        path: |
+          Flower-Exchange/Exchanger/bin/Release/Exchanger.exe
+          Flower-Exchange/Trader/bin/Release/Trader.exe
+

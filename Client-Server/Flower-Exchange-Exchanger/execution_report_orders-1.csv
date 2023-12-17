@@ -1,8 +1,0 @@
-Execution_Rep.csv
-Order ID,Client Order ID,Instrument,Side,Exec Status,Quantity,Price,Reason,Transaction Time
-ord1,aa13,Rose,2,0,100,65.00,,20231217-101913.090
-ord2,aa14,Lavender,1,0,100,55.00,,20231217-101913.090
-Execution_Rep.csv
-Order ID,Client Order ID,Instrument,Side,Exec Status,Quantity,Price,Reason,Transaction Time
-ord1,aa13,Rose,2,0,100,65.00,,20231217-103051.472
-ord2,aa14,Lavender,1,0,100,55.00,,20231217-103051.473

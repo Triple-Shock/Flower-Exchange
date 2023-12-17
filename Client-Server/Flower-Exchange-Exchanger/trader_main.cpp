@@ -41,6 +41,10 @@ int main() {
         std::cout << "Enter CSV file name (or type 'exit' to quit): ";
         std::getline(std::cin, csvFilePath);
 
+        if (csvFilePath == "exit") {
+            break;  // Exit the loop if the user types 'exit'
+        }
+
         SOCKET clientSocket = socket(AF_INET, SOCK_STREAM, 0);
         if (clientSocket == INVALID_SOCKET) {
             std::cerr << "Error creating socket\n";
@@ -55,9 +59,6 @@ int main() {
             return EXIT_FAILURE;
         }
 
-        if (csvFilePath == "exit") {
-            break;  // Exit the loop if the user types 'exit'
-        }
 
         // Read CSV file
         std::string csvData = readCSVFile(csvFilePath);
@@ -71,7 +72,6 @@ int main() {
         // Send CSV to server
         size_t totalSent = 0;
         while (totalSent < csvData.size()) {
-            std::cout << "Sent " << totalSent << " bytes of " << csvData.size() << " bytes\n";
             size_t remainingData = csvData.size() - totalSent;
             size_t chunkSize = BUFFER_SIZE < remainingData ? BUFFER_SIZE : remainingData;
 

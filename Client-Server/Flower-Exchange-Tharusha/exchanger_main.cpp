@@ -168,10 +168,9 @@ int main(int argc, char* argv[]) {
         uint32_t outCsvSize = static_cast<uint32_t>(outCsvData.size());
         send(clientSocket, reinterpret_cast<const char*>(&outCsvSize), sizeof(outCsvSize), 0);
 
-        // Send CSV to server
+        // Send CSV to client
         size_t totalSent = 0;
         while (totalSent < outCsvData.size()) {
-            std::cout << "Sent " << totalSent << " bytes of " << outCsvData.size() << " bytes\n";
             size_t remainingData = outCsvData.size() - totalSent;
             size_t chunkSize = BUFFER_SIZE < remainingData ? BUFFER_SIZE : remainingData;
 

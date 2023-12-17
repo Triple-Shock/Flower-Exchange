@@ -1,3 +1,6 @@
+[![Build](https://github.com/Triple-Shock/Flower-Exchange/actions/workflows/msbuild.yml/badge.svg?branch=main)](https://img.shields.io/github/actions/workflow/status/Triple-Shock/Flower-Exchange/msbuild.yml?logo=github&label=Build
+)
+
 # Flower-Exchange Application
 
 - The flower exchange is a system which supports basic trading. 

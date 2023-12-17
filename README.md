@@ -18,8 +18,8 @@ Open a project or solution > Go to `Flower-Exchange` folder > Select `Flower-Exc
 
 ### To execute the application
 
-- Download `Exchange.exe`, `Trader.exe` and all the sample order files(`orders-*.csv`) from the latest release.
-- Run the `Exchange.exe` & `Trader.exe`. Make sure two `.exe` files and `.csv` files are in the same folder.
+- Download `Exchanger.exe`, `Trader.exe` and all the sample order files(`orders-*.csv`) from the latest release.
+- Run the `Exchanger.exe` & `Trader.exe`. Make sure two `.exe` files and `.csv` files are in the same folder.
 - Provide the filenames of the order files.
 - Execution reports will be generated as `.csv` files(`execution_report_orders-*.csv`) in the same folder.
 

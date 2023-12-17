@@ -38,6 +38,6 @@ jobs:
       with:
         name: artifacts
         path: |
-          Flower-Exchange/Exchanger/bin/Release/Exchanger.exe
-          Flower-Exchange/Trader/bin/Release/Trader.exe
+          Flower-Exchange/x64/Release/Exchanger.exe
+          Flower-Exchange/x64/Release/Trader.exe
 

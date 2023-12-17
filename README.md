@@ -1,5 +1,5 @@
-[![Build](https://github.com/Triple-Shock/Flower-Exchange/actions/workflows/msbuild.yml/badge.svg?branch=main)](https://img.shields.io/github/actions/workflow/status/Triple-Shock/Flower-Exchange/msbuild.yml?logo=github&label=Build
-)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/Triple-Shock/Flower-Exchange/msbuild.yml?logo=github&label=Build)
+
 
 # Flower-Exchange Application
 
